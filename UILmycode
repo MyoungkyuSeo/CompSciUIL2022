@@ -1,0 +1,154 @@
+//Number 1 
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution. */
+        Scanner scan = new Scanner(System.in);
+        int t = scan.nextInt();
+        scan.nextLine();
+       
+        while(t-- > 0) {
+            String a = scan.next();
+            String b = scan.next();
+            scan.nextLine();
+           
+            for(int i = 0; i < b.length(); i++) {
+                char c = b.charAt(i);
+               
+                if(c == 'L') {
+                    a = lRotate(a);
+                } else if(c == 'R') {
+                    a = rRotate(a);
+                }
+            }
+            System.out.println(a);
+        }
+    }
+   
+    static String lRotate(String s) {
+        if(s.length() == 1) return s;
+        String a = s.substring(1,s.length()) + s.substring(0,1);
+        return a;
+    }
+       
+    static String rRotate(String s) {
+        if(s.length() == 1) return s;
+        String a = s.substring(s.length()-1, s.length()) + s.substring(0,s.length()-1);
+        return a;
+    }
+}
+//Number 2 
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        int t = scan.nextInt();
+        scan.nextLine();
+       
+        while(t-- > 0) {
+            String actual = scan.next();
+            String guess = scan.next();
+            scan.nextLine();
+           
+            String ans = "";
+               
+           
+            for(int i = 0; i < 5; i++)
+            {
+                char a = guess.charAt(i);
+                if(actual.indexOf(a) == -1) {
+                    ans += "*";
+                } else if(actual.indexOf(a) == i) {
+                    ans += Character.toUpperCase(a);
+                } else {
+                    ans += a;
+                }
+            }
+            System.out.println(ans);
+        }
+    }
+}
+//Number 3
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution. */
+        Scanner scan = new Scanner(System.in);
+        int t = scan.nextInt();
+       
+        while(t-- > 0) {
+            int a = scan.nextInt();
+            int b = scan.nextInt();
+            scan.nextLine();
+           
+            System.out.println(a == b ? "P2" : "P1");
+        }
+    }
+}
+//Number 4
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+   
+    static final Map<String, String> map = new HashMap<>();
+    static {
+        map.put(" ", "-.....");
+        map.put("A", "-.....-");
+        map.put("B", "-....-.");
+        map.put("C", "-....--");
+        map.put("D", "-...-..");
+        map.put("E", "-...-.-");
+        map.put("F", "-...--.");
+        map.put("G", "-...---");
+        map.put("H", "-..-...");
+        map.put("I", "-..-..-");
+        map.put("J", "-..-.-.");
+        map.put("K", "-..-.--");
+        map.put("L", "-..--..");
+        map.put("M", "-..--.-");
+       
+        map.put("N", "-..---.");
+        map.put("O", "-..----");
+        map.put("P", "-.-....");
+        map.put("Q", "-.-...-");
+        map.put("R", "-.-..-.");
+        map.put("S", "-.-..--");
+        map.put("T", "-.-.-..");
+        map.put("U", "-.-.-.-");
+        map.put("V", "-.-.--.");
+        map.put("W", "-.-.---");
+        map.put("X", "-.--...");
+        map.put("Y", "-.--..-");
+        map.put("Z", "-.--.-.");
+    }
+   
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        int t = scan.nextInt();
+        scan.nextLine();
+       
+        for(int tt = 1; tt <= t; tt++) {
+            System.out.printf("Message #%d: %s%n", tt, translate(scan.nextLine()));
+        }
+    }
+   
+    static String translate(String s) {
+        s = s.toUpperCase();
+        String ans = "";
+        for(int i = 0; i < s.length(); i++) {
+            String a = "" + s.charAt(i);
+            ans += map.get(a) + " ";
+        }
+        return ans.substring(0, ans.length() - 1);
+    }
+}
